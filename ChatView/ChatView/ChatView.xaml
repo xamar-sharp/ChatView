@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="chatView" xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChatView.ChatView" xmlns:local="clr-namespace:ChatView">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Image Source="{Binding BackgroundImage}" Aspect="Fill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+            <RefreshView x:Name="refresh" RefreshColor="{Binding RefreshColor}" Command="{Binding RefreshCommand}" CommandParameter="{x:Reference refresh}">
+                <ListView x:Name="list" CachingStrategy="RecycleElementAndDataTemplate" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Messages}" AbsoluteLayout.LayoutBounds="0,0,1,0.8" AbsoluteLayout.LayoutFlags="All">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Vertical">
+                                        <BoxView HeightRequest="10"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout>
+                                                <ImageButton Aspect="Fill" Source="{Binding SenderIcon}" Command="{Binding IconTappedCommand,Source={x:Reference chatView}}" CommandParameter="{Binding .}" CornerRadius="90" HeightRequest="70" WidthRequest="70"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="{Binding SenderLogin,Converter={StaticResource chatSenderConverter},ConverterParameter={x:Reference chatView}}">
+                                                <Frame CornerRadius="15" Padding="5" WidthRequest="250" BackgroundColor="{Binding SenderLogin,Converter={StaticResource chatBackConverter},ConverterParameter={x:Reference chatView}}">
+                                                    <Frame.Content>
+                                                        <StackLayout Orientation="Vertical">
+                                                            <Label Text="{Binding SenderLogin}" TextColor="{Binding ContentTitleColor,Source={x:Reference chatView}}" FontSize="Large" TextType="Text"/>
+                                                            <Label Text="{Binding TextMessage}" TextColor="{Binding ContentTextColor,Source={x:Reference chatView}}" FontSize="Medium" TextType="Html"/>
+                                                            <Label Text="{Binding CreatedAt}" TextColor="{Binding ContentDateColor,Source={x:Reference chatView}}" FontSize="Body" TextType="Text"/>
+                                                        </StackLayout>
+                                                    </Frame.Content>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell.View>
+                                <ViewCell.ContextActions>
+                                    <MenuItem BindingContext="{x:Reference chatView}" Command="{Binding ContextCommand}" CommandParameter="{x:Reference list}" IconImageSource="{Binding ContextIcon}"/>
+                                </ViewCell.ContextActions>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
+            <StackLayout Orientation="Horizontal" Spacing="2" AbsoluteLayout.LayoutBounds="0,0.98,1,0.1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout x:Name="stack" Orientation="Vertical" WidthRequest="285">
+                    <Frame CornerRadius="15" Padding="0" HorizontalOptions="FillAndExpand">
+                        <Editor Text="{Binding TextMessage}" BackgroundColor="{Binding BackColor}" TextColor="{Binding TextColor}" AutoSize="TextChanges" Keyboard="Chat" MaxLength="2000"/>
+                    </Frame>
+                </StackLayout>
+                <ImageButton Command="{Binding SendMessageCommand}" Aspect="Fill" Source="{Binding SendImage}" HeightRequest="70" CornerRadius="90" WidthRequest="70" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

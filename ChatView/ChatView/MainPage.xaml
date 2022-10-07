@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChatView.MainPage" xmlns:local="clr-namespace:ChatView">
+
+    <StackLayout>
+        <local:ChatView x:Name="chat" BackgroundImage="newimg.jpg" BackColor="Green" ContentDateColor="Red" UserName="Xamarin"  ContentTextColor="White" ContentTitleColor="Red" SendImage="send.png" ContextIcon="remove.png" RefreshColor="Red"/>
+    </StackLayout>
+
+</ContentPage>
