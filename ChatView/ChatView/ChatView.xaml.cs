@@ -48,6 +48,14 @@ namespace ChatView
         public string UserName { get; set; }
         public ChatView()
         {
+            if (!App.Current.Resources.ContainsKey("chatBackConverter"))
+            {
+                App.Current.Resources.Add("chatBackConverter", new Converters.ChatBackgroundConverter());
+            }
+            if (!App.Current.Resources.ContainsKey("chatSenderConverter"))
+            {
+                App.Current.Resources.Add("chatSenderConverter", new Converters.ChatSenderConverter());
+            }
             InitializeComponent();
             SendMessageCommand = new Command(() =>
             {

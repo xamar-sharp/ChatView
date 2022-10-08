@@ -25,7 +25,7 @@ namespace ChatView
             new Message(new MessageDTO() { CreatedAt = DateTime.Now, Login = "friend", IconURI = "https://b1.pngbarn.com/png/1017/383/valve-world-icon-addon-1-badge-of-blood-white-and-blue-logo-screenshot-png-clip-art-thumbnail.png", TextMessage = "Hello!" })}) ;
             BackColor = Color.Blue;
             chat.Pair = new KeyValuePair<Color, Color>(Color.DarkOrchid, Color.MediumOrchid);
-            chat.IconTappedCommand = new Command(async (obj)=>
+            chat.IconTappedCommand = new Command(async (obj) =>
             {
                 await DisplayAlert((obj as Message).SenderLogin, (obj as Message).TextMessage, "Cancel");
             });
