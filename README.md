@@ -1,8 +1,22 @@
 # ChatView
-ChatView is simple, maximum customizable implemetation of Chat in Xamarin.Forms based on MVVM principle
-<h1>Short documentation:</h1>
-<p>ChatView is content view for usage and customization.
-Message class is ViewModel of chat row,Converters that switch ChatView.UserName and set backgroundColor for
-frame of chat row to ChatView.Pair Color.
-To MessageDTO class you may deserialize incoming REST Json String.</p>
-<h3>Common ns: ChatView.Models,ChatView.Converters(implicit),ChatView</h3>
+
+## Описание
+`ChatView` - простая, максимально гибкая и настраиваемая реализация визуального чата в Xamarin.Forms.
+## Установка
+1.	Вы можете скачать `NuGet`-пакет `Forms.Plugin.ChatView`.
+2.	Или выполните эту команду в командной строке Windows, если желаете модифицировать эту библиотеку:
+	```bash
+		git clone https://github.com/xamar-sharp/ChatView.git
+	```
+## Использование
+<p>`ChatView` — это представление содержимого для использования и настройки.
+Класс `Message` — это `ViewModel` строчки чата. `Конвертеры` меняют `ChatView.UserName` и устанавливают `backgroundColor` для
+рамки строки чата на `ChatView.Pair` цвет.
+К классу `MessageDTO` можно десериализовать входящую строку `JSON`.</p>
+<h3>Распространённые пространства имен библиотеки: `ChatView.Models`, `ChatView.Converters` (неявно), `ChatView`</h3>
+Данноая библиотека опубликована в development-форме и может быть вами модифицировано,
+при наличии установленных на вашем устройстве платформы `.NET5` и фреймворка `Xamarin.Forms`.
+Библиотека спроектирована с учетом принципов `MVVM`.
+## Лицензия 
+MIT, Apache License 2.0
+
